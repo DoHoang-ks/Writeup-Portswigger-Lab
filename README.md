@@ -4,7 +4,7 @@
 
 ## Giới thiệu:
 Mình được anh mình chỉ [portswigger](https://portswigger.net) để luyện tập. Trong project này mình sẽ hoàn thiện  50 bài lab với các chủ đề khác nhau.
-- [File Upload Vulnerabilities](https://github.com/DoHoang-ks/Writeup-Portswigger-Lab/blob/main/FileUploadVulnerabilities/fileUpload.md)
+- [File Upload Vulnerabilities](https://github.com/DoHoang-ks/Writeup-Portswigger-Lab/blob/main/FileUploadVulnerabilities/README.md)
 - OAuth 2.0 authentication vulnerabilities
 - HTTP Host header attacks
 - Business logic vulnerabilities
