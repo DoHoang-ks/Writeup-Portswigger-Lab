@@ -8,8 +8,8 @@ Mình được anh mình chỉ [portswigger](https://portswigger.net) để 
 Khá trùng hợp là lỗi **log4j** cũng lổi thời gian gần đây, khi mình mới bắt đầu tìm hiểu phần `Upload File` này. Theo mình tìm hiểu thì **log4j** là một phần trong phần `Upload File`. Ta thấy được `Upload File` không có trong _OWASP2020_ nhưng nó cũng rất nguy hiểm, Nó giúp hacker điều khiển được chương trình hay đọc được các thông tin bảo mật của trang web.
 
 ```sh
-❓Vậy `Upload File Vulnerabilities` là gì?
-`Upload File Vulnerabilities` là khi máy chủ web cho phép người dùng tải tệp lên hệ thống tệp nhưng không thể xác định được tệp hay quyền hạn của các tệp.Điều này dẫn đến một chức năng cơ bản cũng có thể tải được các tệp tùy ý có khả năng nguy hiểm
+❓Vậy Upload File Vulnerabilities là gì?
+Upload File Vulnerabilities là khi máy chủ web cho phép người dùng tải tệp lên hệ thống tệp nhưng không thể xác định được tệp hay quyền hạn của các tệp.Điều này dẫn đến một chức năng cơ bản cũng có thể tải được các tệp tùy ý có khả năng nguy hiểm.
 Điều này có thể tạo ra cơ hội cho những kẻ tấn công tiêm các tập tin độc hại vào máy của bạn. Nếu tin tặc có thể tìm ra cách thực thi các tập tệp đó, chúng làm tổn hại đến hệ thống của bạn.
 
 ```
@@ -31,16 +31,15 @@ Bên trong file chúng ta sẽ code:
 
 <?php echo file_get_contents('/home/carlos/secret'); ?>
 
-<img src="image\Screenshot 2021-12-24 214543.png">
+<img src="image\Screenshot 2021-12-24 215734.png">
 
 Sau khi đăng nhập xong ta sẽ vào giao diện upload ảnh.
 
-<img src="image\Screenshot 2021-12-24 215734.png">
-*Đây là giao diện upload ảnh*
+<img src="image\Screenshot 2021-12-24 214543.png">*Đây là giao diện upload ảnh*
+
 Tiếp theo ta sẽ chọn vào `Brose...` sẽ vào được thư mục tải tệp.
  
- <img src="image\Screenshot 2021-12-24 215928.png">
-*Đây là giao diện sau khi vào*
+<img src="image\Screenshot 2021-12-24 215928.png">
 
 Nhấn chọn file `exploit.php` và Open là xong.
 
