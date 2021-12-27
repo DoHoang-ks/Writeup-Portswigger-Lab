@@ -115,11 +115,11 @@ Sau khi đã hiểu khái quát được giờ ta sẽ bắt tay vào la
 
 Như các bài lab trên bây giờ ta thử tải 1 file `exploit.php`lúc này ta sẽ nhận được thông báo tải file thành công.
 
-<img src="image\lab3">
+<img src="image\lab3.png">
 
 Nhưng ở trong `Repeater` ta thấy được file `exploit.php` truyền lên ở dạng text không được thực thi.
 
-<img src="image\lab3-1">
+<img src="image\lab3-1.png">
 
 Như đã nói ở trên.
 
@@ -132,24 +132,24 @@ Như đã nói ở trên.
 Bây giờ ta thử tải file `exploit.php` lên thư mục cha của nó bằng cách gửi file vào `..\exploit.php`
 Ta sẽ vào `purb` và làm điều đó.
 
-<img src="image\lab3-2">
+<img src="image\lab3-2.png">
 
 Nhưng điều này có vẻ vẫn chưa được ở mục history của Proxy
 
-<img src="image\lab3-3">
+<img src="image\lab3-3.png">
 
 Ở dạng bài này máy chủ web đã loại bỏ bất cứ trình tự nào trước khi chuyển đầu vào của ứng dụng.
 Bây giờ ta có thể thử bằng cách [URL endcoding](https://www.urlencoder.org/). Ta sẽ `endcode` ký tự ..\ thay bằng ..%2f
 
-<img src="image\lab3-4">
+<img src="image\lab3-4.png">
 
 Sau khi sử xong ta forward và về history chọn GET /files/avatar/..%2fexploit.php click chuột phải chọn [Directory traversal](https://portswigger.net/web-security/file-path-traversal).
 
-<img src="image\lab3-5">
+<img src="image\lab3-5.png">
 
 Ở kết quả `Repeater` ta sen và được kết quả.
 
-<img src="image\lab3-6">
+<img src="image\lab3-6.png">
 
 ##### Tổng kết bài lab3
 
