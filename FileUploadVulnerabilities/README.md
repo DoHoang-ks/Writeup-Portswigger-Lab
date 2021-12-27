@@ -35,10 +35,10 @@ Bên trong file chúng ta sẽ code:
 
 Sau khi đăng nhập xong ta sẽ vào giao diện upload ảnh.
 
-<img src="image\Screenshot 2021-12-24 214543.png">*Đây là giao diện upload ảnh*
+<img src="image\Screenshot 2021-12-24 214543.png">_Đây là giao diện upload ảnh_
 
 Tiếp theo ta sẽ chọn vào `Brose...` sẽ vào được thư mục tải tệp.
- 
+
 <img src="image\Screenshot 2021-12-24 215928.png">
 
 Nhấn chọn file `exploit.php` và Open là xong.
@@ -105,3 +105,55 @@ Vậy là ta đã thành công tải tệp lên. Các bước còn lại
 ##### Tổng kết bài lab2
 
 - Cá nhân mình thấy bài này tuy thêm được phần xác định loại file nhưng vẫn rất dễ dàng bị dánh lừa.
+
+## Lab3: Web shell upload via path traversal
+
+Ở bài lab này sẽ ở lever cao hơn bài trước, ta sẽ thấy được file php của ta vẫn được tải lên nhưng lại không thực thi được code. Lúc này máy chủ chỉ thực hiện các fille có kiểu MIME mà đã được định cấu hình để thực thi. Nếu không phải kiểu MIME chỉ định nó sẽ thông báo lỗi hoặc trong một số trường hợp chúng phân phát nội dung của tệp dưới một dạng văn bản thuần túy thay thế.
+
+Để làm được bài này ta cần hiểu thêm về `Directory traversal`
+Sau khi đã hiểu khái quát được giờ ta sẽ bắt tay vào làm bài lab này.
+
+Như các bài lab trên bây giờ ta thử tải 1 file `exploit.php`lúc này ta sẽ nhận được thông báo tải file thành công.
+
+<img src="image\lab3">
+
+Nhưng ở trong `Repeater` ta thấy được file `exploit.php` truyền lên ở dạng text không được thực thi.
+
+<img src="image\lab3-1">
+
+Như đã nói ở trên.
+
+```sh
+ Nếu không phải kiểu MIME chỉ định nó sẽ thông báo lỗi hoặc trong một số trường hợp chúng serve nội dung của tệp dưới một dạng văn bản thuần túy thay thế.
+```
+
+Để giải quyết vấn đề này ta thử tải file `exploit.php` lên thư mục cha của nó. Muốn làm được cách này mình nghĩ bạn phải hiểu [Directory traversal](https://portswigger.net/web-security/file-path-traversal).
+
+Bây giờ ta thử tải file `exploit.php` lên thư mục cha của nó bằng cách gửi file vào `..\exploit.php`
+Ta sẽ vào `purb` và làm điều đó.
+
+<img src="image\lab3-2">
+
+Nhưng điều này có vẻ vẫn chưa được ở mục history của Proxy
+
+<img src="image\lab3-3">
+
+Ở dạng bài này máy chủ web đã loại bỏ bất cứ trình tự nào trước khi chuyển đầu vào của ứng dụng.
+Bây giờ ta có thể thử bằng cách [URL endcoding](https://www.urlencoder.org/). Ta sẽ `endcode` ký tự ..\ thay bằng ..%2f
+
+<img src="image\lab3-4">
+
+Sau khi sử xong ta forward và về history chọn GET /files/avatar/..%2fexploit.php click chuột phải chọn [Directory traversal](https://portswigger.net/web-security/file-path-traversal).
+
+<img src="image\lab3-5">
+
+Ở kết quả `Repeater` ta sen và được kết quả.
+
+<img src="image\lab3-6">
+
+##### Tổng kết bài lab3
+
+Ta thấy được ở bài này có hai vấn đề cần giải quyết:
+
+- Làm sao để tải file `exploit.php` lên thư mục cha để tránh bị báo lỗi hoặc serve dưới dạng văn bản thuần túy.
+- làm sao để `endcode` tránh cho máy chủ web đã loại bỏ bất cứ trình tự nào trước khi chuyển đầu vào của ứng dụng
