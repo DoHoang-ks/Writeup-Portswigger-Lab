@@ -108,7 +108,7 @@ Vậy là ta đã thành công tải tệp lên. Các bước còn lại
 
 ## Lab3: Web shell upload via path traversal
 
-Ở bài lab này sẽ ở lever cao hơn bài trước, ta sẽ thấy được file php của ta vẫn được tải lên nhưng lại không thực thi được code. Lúc này máy chủ chỉ thực hiện các fille có kiểu MIME mà đã được định cấu hình để thực thi. Nếu không phải kiểu MIME chỉ định nó sẽ thông báo lỗi hoặc trong một số trường hợp chúng phân phát nội dung của tệp dưới một dạng văn bản thuần túy thay thế.
+Ở bài lab này sẽ ở lever cao hơn bài trước, ta sẽ thấy được file php của ta vẫn được tải lên nhưng lại không thực thi được code. Lúc này máy chủ chỉ thực hiện các fille có kiểu MIME mà đã được định cấu hình để thực thi. Nếu không phải kiểu MIME chỉ định nó sẽ thông báo lỗi hoặc trong một số trường hợp chúng serve nội dung của tệp dưới một dạng văn bản thuần túy thay thế.
 
 Để làm được bài này ta cần hiểu thêm về `Directory traversal`
 Sau khi đã hiểu khái quát được giờ ta sẽ bắt tay vào làm bài lab này.
